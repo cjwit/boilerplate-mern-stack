@@ -25,19 +25,44 @@ Begin by cloning the repository and running `npm install`.
 Before starting to update configuration files and whatnot, a full-stack application needs a database.
 
 1. Go to <mongodb.com> to sign in and create a new cluster, a new database, and a new collection. Since this is a simple voting app, I start with a collection called `polls`. The MongoDB getting started documentation is fairly straightforward.
+
 2. Return to the cluster on the MongoDB page and get the connection address (currently in a "Connect" button). Click "Connect your application" and copy the `uri`. It should look something like this:
 
 ```
 mongodb+srv://<username>:<password>@<clustername>.uoglk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 ```
 
-3. Change the name of the file called `.env-sample` to `.env` and paste the address into the `DBURL` field.
+3. Change the name of the file called `.env-sample` to `.env` and paste the address into the `DBURL` field. Make sure that the `.env` file is not being tracked by confirming that the `.gitignore` file is catching it!
 
-4. Ensure that the "Network Security" setting in the MongoDB dashboard is open and allows access from anywhere.
+4. Change the text in brackets—`<username>`, `<password>`, and whatever it lists as your cluster–and change the `myFirstDatabase` text to whatever you called your database.
+
+5. Ensure that the "Network Security" setting in the MongoDB dashboard is open and allows access from anywhere.
 
 ### GitHub configuration
 
+This depends on how you got it, but make sure that you're connected to a GitHub repository within your GitHub account. If you cloned this, then it should be good to go. You may want to rename it. There are plenty of resources online to do this. If you don't know what any of this means, take time to learn the basics of `git` and GitHub.
+
 ### Heroku configuration
+
+The GitHub part is important because it makes integration with Heroku easier. You can deploy to Herkou through `git` directly, but I find it simpler to have everything run through GitHub for the sake of keeping things in line. Once you have an account at <www.heroku.com> and can log in, follow these steps:
+
+1. Download the Heroku CLI tools using the directions.
+
+2. Use `heroku create <app-name>`, replacing `<app-name>` with your, well, app's name.
+
+3. Use `heroku config:set PORT <port>`, replacing `<port>` with whatever you choose, to set the first config variable. Do the same with `DBURL` from your `.env` file. Then set the environment to production and check that everything worked using the following:
+
+```
+heroku config:set NODE_ENV=production
+heroku config
+> should show the results
+```
+
+4. Enable [deploying from GitHub using these directions](https://devcenter.heroku.com/articles/github-integration).
+
+5. There's probably a way to do this from the CLI, but the Heroku web site's dashboard makes it pretty easy. From the app's page, click `Deploy` and under `Deployment method`, choose `GitHub`. This brings up an interface to choose the GitHub repository. Set it to deploy from the `main` branch and enable automatic deploys. You may need to use the *Manual Deploys* option below this to push the first one. 
+
+6. Use the *View* button to check it out as long as everything worked! If not, it will try again when you make a fix and push it to GitHub. The `heroku logs --tail` command helps here.
 
 ## Features
 
