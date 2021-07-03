@@ -14,6 +14,7 @@ var app = express();
 app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../app/dist')));
 
 // add routes
 const pollRoutes = require('./routes/pollRoutes');

@@ -34,3 +34,6 @@ mongodb+srv://<username>:<password>@<clustername>.uoglk.mongodb.net/myFirstDatab
 ```
 
 3. Change the name of the file called `.env-sample` to `.env` and paste the address into the `DBURL` field.
+
+4. Ensure that the "Network Security" setting in the MongoDB dashboard is open and allows access from anywhere.
+
