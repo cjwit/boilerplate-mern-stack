@@ -5,14 +5,18 @@ This project contains functional MERN stack application code to be used to easil
 * A Node/Express/MongoDB server
 * Unit testing with Mocha and Chai
 * Integration testing between the server and a test MongoDB database
+* D3.js data visualizations in the sample app
 
 Hopeful future additions include:
 
 * A React site built on a Redux architecture
+* Authentication using Passport.js
 * Analytics through GoatCounter
 * A fully-featured Webpack build process
 * Unit testing with Mocha and Chai on the front end, as well
 * Integration testing with the server
+
+The sample app is for creating and voting in polls with simple D3.js visualizations of the results. The app is live at <https://starter-mern-stack.herokuapp.com>.
 
 This is mostly an effort for me to get some stronger best-practices under my fingertips and it adapts from plenty of resources around the internet. I'll keep a list of useful ones in the descriptions below.
 
