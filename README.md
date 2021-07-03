@@ -20,6 +20,10 @@ This is mostly an effort for me to get some stronger best-practices under my fin
 
 ## Using this boilerplate
 
+Begin by cloning the repository and running `npm install`.
+
+### Database configuration
+
 Before starting to update configuration files and whatnot, a full-stack application needs a database.
 
 1. Go to <mongodb.com> to sign in and create a new cluster, a new database, and a new collection. Since this is a simple voting app, I start with a collection called `polls`. The MongoDB getting started documentation is fairly straightforward.
@@ -29,4 +33,4 @@ Before starting to update configuration files and whatnot, a full-stack applicat
 mongodb+srv://<username>:<password>@<clustername>.uoglk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 ```
 
-3. Paste it into 
+3. Change the name of the file called `.env-sample` to `.env` and paste the address into the `DBURL` field.
