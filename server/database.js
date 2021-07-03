@@ -1,5 +1,5 @@
 const { MongoClient, Timestamp } = require('mongodb');
-const { MongoMemoryServer } = require('mongodb-memory-server');
+// const { MongoMemoryServer } = require('mongodb-memory-server'); // FIX heroku crashes when trying to find
 
 // List your collection names here
 const COLLECTIONS = [];
@@ -7,19 +7,19 @@ const COLLECTIONS = [];
 class databaseManager {
     constructor() {
         this.db = null;
-        this.server = new MongoMemoryServer();
         this.connection = null;
         this.polls = null;  // example collection from the sample app
     }
-
+    
     // use local instance of a database for testing purposes
-    async startTest() {
-        const url = await this.server.getUri();
-        this.connection = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true  });
-        this.db = this.connection.db(await this.server.getDbName());
-        this.polls = this.db.collection('polls');
-        console.log('Connected to local test database');
-    }
+    // async startTest() {
+    //     this.server = new MongoMemoryServer();
+    //     const url = await this.server.getUri();
+    //     this.connection = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true  });
+    //     this.db = this.connection.db(await this.server.getDbName());
+    //     this.polls = this.db.collection('polls');
+    //     console.log('Connected to local test database');
+    // }
 
     // use remote database
     async start() {
