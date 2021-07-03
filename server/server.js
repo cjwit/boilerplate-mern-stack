@@ -5,21 +5,26 @@ if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
 }
 
-const databaseManager = require('./database');
+// add required libraries
 const express = require('express');
 const path = require('path');
 const compress = require('compression');
 
+// set up express and middleware
 var app = express();
+app.use(express.static(path.join(__dirname, '../app/dist')));
 app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../app/dist')));
+
+// include local required files
+const databaseManager = require('./database');
+const pollRoutes = require('./routes/pollRoutes');
 
 // add routes
-const pollRoutes = require('./routes/pollRoutes');
 app.use('/api/polls', pollRoutes);
 
+// set default route handling
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, '../app/dist/index.html'));
 })
