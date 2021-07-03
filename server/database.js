@@ -41,4 +41,4 @@ class databaseManager {
     }
 }
 
-module.exports = databaseManager;
+module.exports = new databaseManager();

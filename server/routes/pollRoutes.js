@@ -1,5 +1,6 @@
 var ObjectId = require('mongodb').ObjectId;
-// var _ = require('underscore');
+const databaseManager = require('../database');
+
 var router = require('express').Router();
 router.route('/vote/:id').post(addVote);
 router.route('/option/:id').post(addOption).delete(deleteOption);
@@ -9,8 +10,7 @@ router.route('/').get(getPolls).post(addPoll);
 // receive all polls in the database
 // FIXME add private option for overall listing and filter for public
 function getPolls(req, res) {
-    const polls = req.app.locals.polls;
-    polls.find().toArray()
+    databaseManager.polls.find().toArray()
         .then(allPolls => {
             res.send(allPolls);
         }).catch(err => console.log(err));
@@ -18,10 +18,9 @@ function getPolls(req, res) {
 
 // add a new poll to the database
 function addPoll(req, res) {
-    const polls = req.app.locals.polls;
     const poll = req.body;
-    console.log(`Adding new poll named ${poll.name}: ${poll}`);
-    polls.insertOne(poll)
+    console.log(`Adding new poll named ${poll.name}`);
+    databaseManager.polls.insertOne(poll)
         .then(result => {
             res.json(poll)
         }).catch(err => console.log(err));

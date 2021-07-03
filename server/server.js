@@ -30,8 +30,7 @@ app.get('/*', function(req, res) {
 })
 
 // connect database and listen
-dbManager = new databaseManager;
-dbManager.start()
+databaseManager.start()
     .then(() => {
         const port = process.env.PORT || 8080
         app.listen(port, function() {

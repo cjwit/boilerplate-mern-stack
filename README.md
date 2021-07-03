@@ -17,6 +17,7 @@ Hopeful future additions include:
 This is mostly an effort for me to get some stronger best-practices under my fingertips and it adapts from plenty of resources around the internet. I'll keep a list of useful ones here.
 
 * [Stack Overflow answer on in-memory DB testing](https://stackoverflow.com/questions/17342144/how-to-setup-mongodb-for-integration-tests-in-nodejs#51677683)
+* [Stack Overflow answer on sharing a connection to MongoDB](https://stackoverflow.com/a/55424097/14443968)
 
 ## Using this boilerplate
 
