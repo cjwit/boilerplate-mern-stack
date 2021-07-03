@@ -14,10 +14,7 @@ Hopeful future additions include:
 * Unit testing with Mocha and Chai on the front end, as well
 * Integration testing with the server
 
-This is mostly an effort for me to get some stronger best-practices under my fingertips and it adapts from plenty of resources around the internet. I'll keep a list of useful ones here.
-
-* [Stack Overflow answer on in-memory DB testing](https://stackoverflow.com/questions/17342144/how-to-setup-mongodb-for-integration-tests-in-nodejs#51677683)
-* [Stack Overflow answer on sharing a connection to MongoDB](https://stackoverflow.com/a/55424097/14443968)
+This is mostly an effort for me to get some stronger best-practices under my fingertips and it adapts from plenty of resources around the internet. I'll keep a list of useful ones in the descriptions below.
 
 ## Using this boilerplate
 
@@ -41,3 +38,12 @@ mongodb+srv://<username>:<password>@<clustername>.uoglk.mongodb.net/myFirstDatab
 ### GitHub configuration
 
 ### Heroku configuration
+
+## Features
+
+### Database connection
+
+The `server/database.js` file creates an instance of a database manager class. This allows for connection sharing across the server. It also enables testing by providing alternative database connection options (like the local version for unit testing).
+
+Exporting a new instance of the object with `module.exports = new databaseManager()` instead of simply exporting the class allows Node's `requires` references to link to the same object instead of creating new ones within each module (like the `server/routes/` files). This structure is based in part on these two Stack Overflow answers: [in-memory DB testing](https://stackoverflow.com/questions/17342144/how-to-setup-mongodb-for-integration-tests-in-nodejs#51677683) and [sharing a MongoDB connection](https://stackoverflow.com/a/55424097/14443968)
+
