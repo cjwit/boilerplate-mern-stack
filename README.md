@@ -37,3 +37,6 @@ mongodb+srv://<username>:<password>@<clustername>.uoglk.mongodb.net/myFirstDatab
 
 4. Ensure that the "Network Security" setting in the MongoDB dashboard is open and allows access from anywhere.
 
+### GitHub configuration
+
+### Heroku configuration
